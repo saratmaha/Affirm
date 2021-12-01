@@ -58,12 +58,24 @@ public with sharing class ContactTriggerHandler implements ITriggerHandler {
     } 
     
     //Query accounts related to contacts
-    Map<Id, Account> accountList = new Map<Id,Account>([SELECT Id,Industry FROM Account Where Id IN :accountIds WITH SECURITY_ENFORCED]); 
+    Map<Id, Account> accountList = null;
+    if(accountIds.size() > 0 ){
+        accountList = new Map<Id,Account>([SELECT Id,Industry FROM Account Where Id IN :accountIds]);
+    }
     
+    
+    //Remove inaccessible fields if the user does not have access to the fields (Industry) and rest executes without errors
+    SObjectAccessDecision decision = Security.stripInaccessible(
+                                       AccessType.READABLE,
+                                       accountList.values()); 
+        
+    // If the accountList does not retreive results due to record accesibilty
+    if(accountList.size() > 0){
     //Assign Industry value (even if null assign the value) to Contact Industry field
-    for(Contact con : contactList){
-        Account acc = accountList.get(con.AccountId);
-        con.Account_Industry__c = acc.Industry;       
-    }      
+         for(Contact con : contactList){
+            Account acc = accountList.get(con.AccountId);
+            con.Account_Industry__c = acc.Industry;       
+        }
+    }         
   }
 }
