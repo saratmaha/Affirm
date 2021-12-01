@@ -1,0 +1,94 @@
+<html>
+	<head>
+
+		<style type="text/css">
+			/* Add styles here */
+
+            #bodyWrapper {
+                text-align: center;
+                max-width: 1024px;
+            }
+            
+            * {
+                font-size: 100%;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            
+            .accountList {
+                color: green;
+                text-shadow: 1px 1px;
+                filter: drop-shadow(16px 16px 10px brown);    
+            }
+            
+            .accountList .alert{
+                background: red ; 
+            }
+            
+            
+            .alert {
+                background: orange;
+            }
+            
+            .btn {
+                border-radius: 25px;
+                background: #A9A9A9;
+                padding: 10px;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .btn:hover {
+                background-color:#696969;
+            }
+            
+            .btn:active {
+                background-color: black;
+                color:white
+            }
+		</style>
+        
+	</head>
+
+	<body>
+		<!-- Give the entire document some nicer font -->
+
+		<div id="bodyWrapper">
+			This div should align in the center of the page and never be wider than 1024px
+
+            <!-- Added line breaks to move click me -->
+            <br/>
+            <br/>
+			<span class="btn">
+				Click me!
+				<!--
+				This should be grey with rounded corders
+				It should have some nice spacing between the text and the outside of the button
+				On mouse hover it should be slightly darker grey
+				When depressed or clicked it should be very dark grey but font should still be readable
+				For each state, the border should be a slightly darker color than the background
+				-->
+			</span>
+
+			<br/>
+			<br/>
+
+			<div class="accountList">
+				<!-- Default color of all these divs should be some shade of green, do not add any additional class names -->
+				<!-- Each div should also have a nice soft drop shadow and adequate spacing between each item to show this shadow -->
+				<div>Acme</div>
+				<div class="alert">Widgets Inc. <!--background should be red, do not change the class name from 'alert'--></div>
+				<div>Gears and Bearings</div>
+				<div>Computer City</div>
+			<div>
+
+			<br/>
+			<br/>
+
+			<div class="alert">
+				<!--background should be orange, do not change the class name from 'alert'-->
+				Uh oh, something broke
+			</div>
+
+		</div>
+	</body>
+</html>

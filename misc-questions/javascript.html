@@ -1,0 +1,153 @@
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript">
+      // Do not use jQuery or any other libraries for these JavaScript questions.
+
+      // Q1) Complete this function that receives an array of numbers and returns the sum of the values in the array.
+      /** Since the result is to return the sum, array.reduce function can also be used here or we can iterate the
+         list and add the numbers in the array and return the result in traditional way
+      */
+      
+        function sumNumberArray(numArray) {
+            let total = 0
+            for(let i=0; i<numArray.length; i++){
+                if(typeof numArray[i] === "number") {
+                    total = total + numArray[i]
+                }                
+            }
+            return total
+	    }
+        let arr = [10,20,5,'sarat']
+        let total = sumNumberArray(arr)
+        console.log(total)
+
+        // Approach 2 using reduce
+        let sum = arr.reduce((total, currentItem) => {
+            if(typeof currentItem === "number"){
+                return total + currentItem 
+            } 
+            return total                    
+        },0)
+        
+        console.log('from reduce -> ' + sum)
+
+      //The following questions below will use this array of Contact objects
+      var contacts = [
+        { account: "Acme", firstName: "John", lastName: "Snow" },
+        { account: "Metal Industries", firstName: "Ted", lastName: "Smith" },
+        { account: "Acme", firstName: "Sara", lastName: "Butler" },
+        { account: "HiTech Corp", firstName: "Sam", lastName: "Johnson" },
+        { account: "HiTech Corp", firstName: "Arnold", lastName: "Williams" },
+        { account: "Metal Industries", firstName: "Jessica", lastName: "Westcoat" },
+        { account: "Acme", firstName: "Kyle", lastName: "Johnson" },
+        { account: "HiTech Corp", firstName: "Jason", lastName: "Fernandez" },
+      ];
+
+      //Given the code below.....
+      var contact = contacts[0];
+      contact.firstName = "Scott";
+      console.log(contacts[0].firstName)      
+      // Q2 ) What is the value of contacts[0].firstName? Why?
+      /**It is going to print Scott becuase the variable contact is only a reference to the array object
+            and change to the variable contact is going to change the value in actual reference. 
+            If the intension is not to modify then we have to create a shallow copy of the array 
+            let con1 = [...contacts] and then change the contents in the array 
+      **/      
+
+      //Similarly, given the following array of numbers
+      var numberArray = [3, 44, 64];
+      var num = numberArray[0];
+      num = 13;    
+      // Q3) What will be the value of numberArray[0]? Why?
+      console.log('Number array -- ' + numberArray[0])
+      // Prints 3. 
+      /**
+      Unlike array objects, arrays work differently and num variable holds a new value and does not 
+      point to reference. Hence the value 3
+      */
+
+
+      // Q4) Complete the convertAccountArrayToObject() function below that accepts an array like 'contacts' above and
+      // returns an object with the following object structure below where the key is account name and value is an array of alphabetized full names      
+
+      var acctContactObject = {
+        Acme: ["John Snow", "Kyle Johnson", "Sara Butler"],
+        "HiTech Corp": ["Arnold Williams", "Jason Fernandez", "Sam Johnson"],
+        "Metal Industries": ["Jessica Westcoat", "Ted Smith"],
+      };
+
+       //Return an object structured like the 'acctContactObject' object above
+      const convertAccountArrayToObject = (array, key) => {
+        const initialValue = {}
+        // define key and initialize array as value and fill the array with matching key
+        array.forEach((obj, item) => {
+            initialValue[obj.account] = initialValue[obj.account] || []  
+            initialValue[obj.account].push(`${obj.firstName} ${obj.lastName}`)
+        })
+        return initialValue
+    }
+
+    console.log(convertAccountArrayToObject(contacts, 'account'))
+
+      // Q5) See the question in the call back function
+      function getContacts() {
+        var accountId = "123abc";
+
+        $.get("ajax/contacts.json?id=" + accountId, function (data) {
+          //This is an asynchronous callback function
+          //This is inside an anonymous function executing asynchronously in a seperate context but it still has the ability to read the value
+          // in the 'accountId' var. Why?
+          /**
+           This is an example of clousure and the value of accountId is available to the function directly below it
+           and that is how the accountId can been seen in this async function call        
+          */
+          console.log("I see you " + accountId);
+        });
+      }
+      //console.log(getContacts())
+
+      // Q6) What is the difference between the == operator and the === operator? Give an example of why may use one instead of the other.
+      /**
+        Unlike in traditioal languages like Java or c#, JavaScript is not a strict data type assignment language
+        meaning var a = 10 which is number in this case and var b = '10' which is String in this case but the datatype
+        assignment is still var in both cases. If we want to do the comparision where (a == b) returns true since the values 
+        in both values are same but not types. If we want to do the data type comparision then we have use the strict
+        comparision operator (a === b) returns false
+      */
+
+      // Q7) What will the output of the following function be? You can easily run this function and see the output but also explain why?
+      function doTimeouts() {
+        console.log(1);
+        setTimeout(function () {
+          console.log(2);
+        }, 1000);
+        setTimeout(function () {
+          console.log(3);
+        }, 0);
+        console.log(4);
+      }
+
+      /**
+        setTimeout function sets the timer and executes callback function after specified time out and is 
+        asynchoronous in nature so the console log statements without setTimeout function will execute first 
+        from top to bottom and setTimeout functions execute in the order of time delay
+        So - console.log(1) and console.log(4) prints before any other setTimeout statements and then setTimeout(3)
+        becuase this immediately executes with 0 sec delay and finally setTimeout(3) executes with 1 sec delay
+      */
+
+      // Q8) JavaScript includes basic string functions like toLowerCase() and toUpperCase(). JavaScript provides a mechanism to attach 
+			// custom methods to core objects like String. Do what is necessary to make the commented line below work and output the reversed 
+			// value of the 'productName' var.
+      /**
+        The idea is to split the string to array of characters, then use the array method reverse and join back to
+        make it a string
+      */
+      var productName = "Smartsheet".split("");      
+      console.log(productName.reverse().join(""))
+    </script>
+  </head>
+  <body>
+    <p>View the source code of this page and answer the questions/complete the code.</p>
+  </body>
+</html>

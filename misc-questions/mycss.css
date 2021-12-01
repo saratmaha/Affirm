@@ -1,0 +1,41 @@
+#bodyWrapper {
+    text-align: center;
+    max-width: 1024px;
+}
+
+* {
+    font-size: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.accountList {
+    color: green;
+    text-shadow: 1px 1px;
+    filter: drop-shadow(16px 16px 10px brown);    
+}
+
+.accountList .alert{
+    background: red ; 
+}
+
+
+.alert {
+    background: orange;
+}
+
+.btn {
+    border-radius: 25px;
+    background: #A9A9A9;
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+.btn:hover {
+    background-color:#696969;
+}
+
+.btn:active {
+    background-color: black;
+    color:white
+}
