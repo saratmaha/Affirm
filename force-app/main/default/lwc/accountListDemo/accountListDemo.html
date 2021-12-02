@@ -1,7 +1,11 @@
 <template>
     <lightning-card title="Accounts List">
-        <div class="slds-m-around_medium">
-            
+        <div class="slds-var-m-around_medium">
+            <template for:each={accounts} for:item="account">
+                <div key={account.Id}> 
+                    {account.name}
+                </div>
+            </template>
         </div>
     </lightning-card>
 </template>
