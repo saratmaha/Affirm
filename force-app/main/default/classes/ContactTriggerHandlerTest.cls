@@ -1,7 +1,6 @@
 @isTest
 private class ContactTriggerHandlerTest {
-  
-  
+    
   @testSetup
   static void setup() {
   
