@@ -29,7 +29,20 @@ public with sharing class ContactTriggerHandler implements ITriggerHandler {
 
   public void BeforeUpdate(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {
     // Cast the Map<Id, Sobject> to Contact[]
-    populateAccountIndustry((Contact[])newItems.values());
+    //Verify if there is an account change and pass only those with account change
+    List<Contact> contacts = new List<Contact>();
+    for(Id contactId : newItems.keySet()) {
+        Contact newContact = (Contact)newItems.get(contactId);
+        Contact oldContact = (Contact)oldItems.get(contactId);
+        
+        if(newContact.AccountId != oldContact.AccountId){
+            contacts.add(newContact);
+        }        
+    }
+    if(contacts.size() > 0){
+        //System.debug('Contacts with account change-->' + contacts);
+        populateAccountIndustry(contacts);
+    }    
   }
 
   public void BeforeDelete(Map<Id, SObject> oldItems) {}
