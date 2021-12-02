@@ -1,0 +1,15 @@
+<apex:page lightningStylesheets="true">
+    <apex:includeLightning />
+    <div  id="compContainer" />
+    <script>
+        $Lightning.use("c:LwcApp", function() {
+            $Lightning.createComponent("c:AccountListDemo",
+                {},
+                "compContainer",
+                function(cmp) {
+                    console.log("c:VFPageApp loaded successfully in VF page");
+                }
+            );
+        });
+     </script>
+</apex:page>

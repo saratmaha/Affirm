@@ -1,0 +1,16 @@
+<template>
+    <template if:true={account}>
+        <lightning-card title="Account Detail">
+            <div class="content">
+                <img src={account.Owner.SmallPictureUrl} class="slds-align_absolute-center"
+                alt="Owner Picture" />
+            </div>
+            <div>
+                <p class="title slds-align_absolute-center">Account Name - {account.Name}</p>
+                <p class="slds-align_absolute-center">Account Industry - {account.Industry}</p>
+                <p class="slds-align_absolute-center">Accout Type -  {account.Type}</p>
+                <p class="slds-align_absolute-center">Account Owner Name - {account.Owner.Name}</p>                
+            </div>
+        </lightning-card>        
+    </template>    
+</template>

@@ -1,0 +1,14 @@
+.demo-only{
+    position: relative;
+}
+.demo-only:active, .slds-item:active {
+    background-color: grey;
+    background: grey;
+}
+.slds-tile__detail:active {
+    background-color: grey;
+}
+
+.demo-only:focus, .slds-item:active{
+    outline: 1px solid blue;
+}

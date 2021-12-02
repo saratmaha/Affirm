@@ -1,11 +1,25 @@
 <template>
     <lightning-card title="Accounts List">
         <div class="slds-var-m-around_medium">
-            <template for:each={accounts} for:item="account">
-                <div key={account.Id}> 
-                    {account.name}
+            <template if:true={accounts}>
+                <template for:each={accounts} for:item="acc">
+                    <c-account-tile key={acc.Id} account={acc} onaccountclick={handleAccountClick}></c-account-tile>
+                </template>
+                <div class="slds-var-p-around_medium">
+                    <lightning-button label="Next" variant="brand" onclick={handleNext} class="btn"
+                    ></lightning-button>
+                    <lightning-button label="Back" variant="brand" onclick={handleBack} class="btn"
+                    ></lightning-button>
                 </div>
             </template>
+            <template if:true={accounts.error}>
+                <p>errors={accounts.error}></p>
+            </template>            
         </div>
     </lightning-card>
+    <div>
+        <template if:true={showAccountDetail}>
+            <c-account-detail account-id={selectedAccount}></c-account-detail>
+        </template>
+    </div>
 </template>
