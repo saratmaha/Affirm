@@ -1,18 +1,31 @@
-# Salesforce DX Project: Next Steps
+# Interview with Affirm
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+## Accessing the org
+- Username - sarat@affirm.interview. Password - Shared per instructions
+- Alternatively, you can change the password the link will be sent to an unauthenticated email site and can be accessed without using additional passwords
+- Go to yopmail.com and enter affirm.interview and click go.
+- Please see the screenshot affirm in `misc-questions` folder
 
-## How Do You Plan to Deploy Your Changes?
+## Technical Documentation
+- Answers to all questions are in two places. 
+- `technical-documentation` folder contains the same file with my notes
+- `misc-questions` folder contains exercise files and screen shots
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+## Deployment instructions
 
-## Configure Your Salesforce DX Project
+- If the org is inaccessible please use the deployment instructions to deploy to 
+your own org.
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+If you are deploying it on developer org
 
-## Read All About It
+`sfdx force:org:deploy -p "force-app\main\default\" -u {alias/username}`
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+If you are deploying it on developer org
+
+`sfdx force:source:push -p "force-app\main\default\" -u {alias/username}`
+
+
+
+
+
+
